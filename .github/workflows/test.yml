@@ -4,8 +4,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - use: actions/checkouts@v3
-      - use: rrennoir/portainer-stack
+      - uses: actions/checkouts@v3
+      - uses: rrennoir/portainer-stack
         with:
           portainerUrl: ${{ secrets.PORTAINER_URL }}
           portainerUsername: ${{ secrets.PORTAINER_USERNAME }}
