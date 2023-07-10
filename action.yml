@@ -37,7 +37,7 @@ inputs:
     required: false
     default: 1
   
-  pruneStack:
+  prune:
     description: "Prune stack when updating"
     required: false
     default: false
