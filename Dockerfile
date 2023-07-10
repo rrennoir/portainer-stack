@@ -1,7 +1,10 @@
-FROM alpine:3.10
+FROM python:3-slim AS builder
+ADD . /build
+WORKDIR /build
+RUN pip install --target=/app requests
 
-COPY LICENSE README.md /
-
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+FROM gcr.io/distroless/python3-debian11
+COPY --from=builder /build /app
+WORKDIR /app
+ENV PYTHONPATH /app
+CMD ["/app/src/main.py"]

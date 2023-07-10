@@ -1,0 +1,21 @@
+name: Test action
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - use: actions/checkouts@v3
+      - use: rrennoir/portainer-stack
+        with:
+          portainerUrl: ${{ secrets.PORTAINER_URL }}
+          portainerUsername: ${{ secrets.PORTAINER_USERNAME }}
+          portainerPassword: ${{ secrets.PORTAINER_PASSWORD }}
+          portainerEndpointId: 2
+          stackName: test-github
+          stackType: 2
+          composeFile: tests/docker-compose.yml
+          delete: false
+          pruneStack: false
+          pullImage: false
+          verifySSL: false
+

@@ -1,12 +1,57 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
-inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+name: 'Portainer Stack Deployment'
+description: 'Deploy a stack to Portainer'
+author: 'Ryan Rennoir'
+inputs:
+  portainerUrl:
+    description: "Url of the Portainer instance"
+    required: true
+
+  portainerUsername:
+    description: "Username to authenticate to the Portainer API"
+    required: true
+
+  portainerPassword:
+    description: "Password to authenticate to the Portainer API"
+    required: true
+
+  stackName:
+    description: "Name of the stack"
+    required: true
+
+  stackType:
+    description: "Stack type (1: Swarm stack, 2: Compose stack, 3: Kubernetes stack)"
+    required: false
+    default: 1
+
+  composeFile:
+    description: "Path to the compose file"
+    required: true
+
+  endpointId:
+    description: "Id of the portainer endpoint"
+    required: false
+    default: 1
+  
+  pruneStack:
+    description: "Prune stack when updating"
+    required: false
+    default: false
+
+  pullImage:
+    description: "Repull every images"
+    required: fasle
+    default: false
+
+  delete:
+    description: "Delete the stack"
+    required: false
+    default: false
+
+  verifySSL:
+    description: "Check the validity of the SSL certificate"
+    required: false
+    default: true
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.myInput }}
