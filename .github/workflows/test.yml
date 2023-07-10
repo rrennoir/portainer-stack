@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+      # Create / update
       - uses: rrennoir/portainer-stack@main
         with:
           portainerUrl: ${{ secrets.PORTAINER_URL }}
@@ -22,6 +24,7 @@ jobs:
       - name: Upate compose file
         run: sed -i 's/nginx:latest/nginx:1.25-alpine/g' tests/docker-compose.yml
 
+      # Create / update with prune and pull image
       - uses: rrennoir/portainer-stack@main
         with:
           portainerUrl: ${{ secrets.PORTAINER_URL }}
@@ -35,6 +38,7 @@ jobs:
           pullImage: true
           verifySSL: false
 
+      # Delete 
       - uses: rrennoir/portainer-stack@main
         with:
           portainerUrl: ${{ secrets.PORTAINER_URL }}
