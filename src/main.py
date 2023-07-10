@@ -3,17 +3,17 @@ from portainer import PortainerStack
 
 def main():
     
-    stackInfo = PortainerStack(os.environ["INPUT_portainerUrl"],
-                               os.environ["INPUT_portainerUsername"],
-                               os.environ["INPUT_portainerPassword"],
-                               int(os.environ["INPUT_portainerEndpointId"]),
-                               os.environ["INPUT_stackName"], 
-                               int(os.environ["INPUT_stackType"]),
-                               os.environ["INPUT_composeFile"],
-                               bool(os.environ["INPUT_prune"]),
-                               bool(os.environ["INPUT_pullImage"]),
-                               bool(os.environ["INPUT_delete"]),
-                               bool(os.environ["INPUT_verifySSL"]))
+    stackInfo = PortainerStack(os.environ["INPUT_PORTAINERURL"],
+                               os.environ["INPUT_PORTAINERUSERNAME"],
+                               os.environ["INPUT_PORTAINERPASSWORD"],
+                               int(os.environ["INPUT_PORTAINERENDPOINTID"]),
+                               os.environ["INPUT_STACKNAME"], 
+                               int(os.environ["INPUT_STACKTYPE"]),
+                               os.environ["INPUT_COMPOSEFILE"],
+                               bool(os.environ["INPUT_PRUNE"]),
+                               bool(os.environ["INPUT_PULLIMAGE"]),
+                               bool(os.environ["INPUT_DELETE"]),
+                               bool(os.environ["INPUT_VERIFYSSL"]))
 
     stackInfo.deployStack()
 
