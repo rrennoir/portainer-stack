@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkouts@v3
-      - uses: rrennoir/portainer-stack
+      - uses: rrennoir/portainer-stack@main
         with:
           portainerUrl: ${{ secrets.PORTAINER_URL }}
           portainerUsername: ${{ secrets.PORTAINER_USERNAME }}
