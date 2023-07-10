@@ -15,7 +15,7 @@ inputs:
     required: true
 
   portainerEndpointId:
-    description: ""
+    description: "ID of the Portainer endpoint, usually 2"
     required: false
     default: 1
 
@@ -31,12 +31,7 @@ inputs:
   composeFile:
     description: "Path to the compose file"
     required: true
-
-  endpointId:
-    description: "Id of the portainer endpoint"
-    required: false
-    default: 1
-  
+ 
   prune:
     description: "Prune stack when updating"
     required: false
