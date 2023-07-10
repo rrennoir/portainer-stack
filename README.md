@@ -28,8 +28,8 @@ jobs:
 
 ## Variables
 
-| --- | --- | --- | --- |
 | Name | Description | Default | Required |
+| --- | --- | --- | --- |
 | portainerUrl | Url of the portainer instance | | yes |
 | portainerUsername | Username to login to the Portainer API | | yes |
 | portainerPassword | Password to login to the Portainer API | | yes |
