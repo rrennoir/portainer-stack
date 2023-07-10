@@ -1,4 +1,4 @@
-name: 'Portainer Stack Deployment'
+name: 'PyPortainerStackDeployment'
 description: 'Deploy a stack to Portainer'
 author: 'Ryan Rennoir'
 inputs:
