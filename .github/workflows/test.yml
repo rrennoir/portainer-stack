@@ -18,4 +18,31 @@ jobs:
           prune: false
           pullImage: false
           verifySSL: false
+      
+      - name: Upate compose file
+        run: sed -i 's/nginx:latest/nginx:1.25-alpine/g' tests/docker-compose.yml
+
+      - uses: rrennoir/portainer-stack@main
+        with:
+          portainerUrl: ${{ secrets.PORTAINER_URL }}
+          portainerUsername: ${{ secrets.PORTAINER_USERNAME }}
+          portainerPassword: ${{ secrets.PORTAINER_PASSWORD }}
+          portainerEndpointId: 2
+          stackName: test-github
+          stackType: 2
+          composeFile: tests/docker-compose.yml
+          prune: true
+          pullImage: true
+          verifySSL: false
+
+      - uses: rrennoir/portainer-stack@main
+        with:
+          portainerUrl: ${{ secrets.PORTAINER_URL }}
+          portainerUsername: ${{ secrets.PORTAINER_USERNAME }}
+          portainerPassword: ${{ secrets.PORTAINER_PASSWORD }}
+          portainerEndpointId: 2
+          stackName: test-github
+          composeFile: tests/docker-compose.yml
+          delete: true
+          verifySSL: false
 
