@@ -1,7 +1,7 @@
 FROM python:3-slim AS builder
 ADD . /build
 WORKDIR /build
-RUN pip install --target=/app requests
+RUN pip install --target=/build requests
 
 FROM gcr.io/distroless/python3-debian11
 COPY --from=builder /build /app
