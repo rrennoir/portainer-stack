@@ -15,7 +15,7 @@ jobs:
           stackType: 2
           composeFile: tests/docker-compose.yml
           delete: false
-          pruneStack: false
+          prune: false
           pullImage: false
           verifySSL: false
 
