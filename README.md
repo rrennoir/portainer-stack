@@ -2,6 +2,8 @@
 
 Action to deploy a docker compose stack to a Portainer instance
 
+This was updated to work with the X-API-Key header instead of the api/auth endpoints
+
 ## Usage
 
 The bare minimum for a stack to be deployed
