@@ -22,10 +22,9 @@ def get_int_env(env_name: str) -> int:
 
 
 def main():
-    
+
     stackInfo = PortainerStack(os.environ["INPUT_PORTAINERURL"],
-                               os.environ["INPUT_PORTAINERUSERNAME"],
-                               os.environ["INPUT_PORTAINERPASSWORD"],
+                               os.environ["INPUT_PORTAINERAPIKEY"],
                                get_int_env("INPUT_PORTAINERENDPOINTID"),
                                os.environ["INPUT_STACKNAME"], 
                                get_int_env("INPUT_STACKTYPE"),

@@ -4,10 +4,9 @@ from dataclasses import dataclass
 
 @dataclass
 class PortainerStack:
-    
+
     portainerUrl: str
-    portainerUsername: str
-    portainerPassword: str
+    portainerApikey: str
     portainerEndpointId: int
     stackName: str
     stackType: int
@@ -23,11 +22,11 @@ class PortainerStack:
 
     def deployStack(self) -> None:
 
-        token = self.login()
-        
+        token = self.portainerApikey
+
         header = {
                     "Content-Type": "application/json",
-                    "Authorization": f"Bearer {token}"
+                    "X-API-Key": f"{token}"
                  }
 
         stack_id = self.getStackIdByName(header)
@@ -37,7 +36,7 @@ class PortainerStack:
             if stack_id != -1:
                 self.deleteStack(header, stack_id)
             return
-            
+
         composeContent = ""
         with open(self.composeFile, "r") as fp:
             composeContent = fp.read()
@@ -62,7 +61,7 @@ class PortainerStack:
             exit(1)
 
         return login_request.json()["jwt"]
-    
+
     def listStacks(self, header: dict[str, str]) -> List[dict[str, Any]]:
 
         stacks_request = requests.get(f"{self.apiUrl}/stacks", headers=header, verify=self.verifySSL)
@@ -78,10 +77,10 @@ class PortainerStack:
             if stack["Name"] == self.stackName:
                 return stack["Id"]
 
-        return -1   
+        return -1
 
     def createStack(self, header: dict[str, str], composeContent: str) -> None:
- 
+
         create_data = {
                 "name": self.stackName,
                 "swarmID": str(self.portainerEndpointId),
@@ -115,9 +114,9 @@ class PortainerStack:
         if update_request.status_code != 200:
             print(f"Failed to update stack, {update_request.status_code}: {update_request.text}")
             exit(1)
-        
+
     def deleteStack(self, header: dict[str, str], stackId: int) -> None:
-        
+
         del_request = requests.delete(
                 f"{self.apiUrl}/stacks/{stackId}?external=false&endpointId={self.portainerEndpointId}",
                 headers=header,
@@ -126,4 +125,4 @@ class PortainerStack:
         if del_request.status_code != 204:
             print(f"Failed to delete stack, {del_request.status_code} {del_request.text}")
             exit(1)
-        
+
