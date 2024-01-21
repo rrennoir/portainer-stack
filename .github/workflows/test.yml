@@ -10,8 +10,7 @@ jobs:
       - uses: rrennoir/portainer-stack@main
         with:
           portainerUrl: ${{ secrets.PORTAINER_URL }}
-          portainerUsername: ${{ secrets.PORTAINER_USERNAME }}
-          portainerPassword: ${{ secrets.PORTAINER_PASSWORD }}
+          portainerApiKey: ${{ secrets.PORTAINER_ACCESS_TOKEN }}
           portainerEndpointId: 2
           stackName: test-github
           stackType: 2
@@ -28,8 +27,7 @@ jobs:
       - uses: rrennoir/portainer-stack@main
         with:
           portainerUrl: ${{ secrets.PORTAINER_URL }}
-          portainerUsername: ${{ secrets.PORTAINER_USERNAME }}
-          portainerPassword: ${{ secrets.PORTAINER_PASSWORD }}
+          portainerApiKey: ${{ secrets.PORTAINER_ACCESS_TOKEN }}
           portainerEndpointId: 2
           stackName: test-github
           stackType: 2
@@ -42,8 +40,7 @@ jobs:
       - uses: rrennoir/portainer-stack@main
         with:
           portainerUrl: ${{ secrets.PORTAINER_URL }}
-          portainerUsername: ${{ secrets.PORTAINER_USERNAME }}
-          portainerPassword: ${{ secrets.PORTAINER_PASSWORD }}
+          portainerApiKey: ${{ secrets.PORTAINER_ACCESS_TOKEN }}
           portainerEndpointId: 2
           stackName: test-github
           composeFile: tests/docker-compose.yml

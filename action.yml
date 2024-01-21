@@ -6,7 +6,7 @@ inputs:
     description: "Url of the Portainer instance"
     required: true
 
-  portainerApikey:
+  portainerApiKey:
     description: "Password to authenticate to the Portainer API"
     required: true
 
