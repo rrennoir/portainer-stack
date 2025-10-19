@@ -35,7 +35,7 @@ inputs:
 
   pullImage:
     description: "Repull every images"
-    required: fasle
+    required: false
     default: false
 
   delete:
